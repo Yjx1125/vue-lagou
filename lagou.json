@@ -1,0 +1,88 @@
+{
+    "data": [
+        {
+            "img": "./img/1.png",
+            "firmName": "博瑞科技",
+            "positionName": "java开发工程师",
+            "time": "今天14:00",
+            "salary": "11k-14k"
+        },
+        {
+            "img": "./img/2.png",
+            "firmName": "博瑞科技",
+            "positionName": "java开发工程师",
+            "time": "今天14:00",
+            "salary": "11k-14k"
+        },
+        {
+            "img": "./img/3.png",
+            "firmName": "博瑞科技",
+            "positionName": "java开发工程师",
+            "time": "今天14:00",
+            "salary": "11k-14k"
+        },
+        {
+            "img": "./img/4.png",
+            "firmName": "博瑞科技",
+            "positionName": "java开发工程师",
+            "time": "今天14:00",
+            "salary": "11k-14k"
+        },
+        {
+            "img": "./img/5.png",
+            "firmName": "博瑞科技",
+            "positionName": "java开发工程师",
+            "time": "今天14:00",
+            "salary": "11k-14k"
+        },
+        {
+            "img": "./img/6.png",
+            "firmName": "博瑞科技",
+            "positionName": "java开发工程师",
+            "time": "今天14:00",
+            "salary": "11k-14k"
+        },
+        {
+            "img": "./img/7.png",
+            "firmName": "博瑞科技",
+            "positionName": "java开发工程师",
+            "time": "今天14:00",
+            "salary": "11k-14k"
+        },
+        {
+            "img": "./img/2.png",
+            "firmName": "博瑞科技",
+            "positionName": "java开发工程师",
+            "time": "今天14:00",
+            "salary": "11k-14k"
+        },
+        {
+            "img": "./img/3.png",
+            "firmName": "博瑞科技",
+            "positionName": "java开发工程师",
+            "time": "今天14:00",
+            "salary": "11k-14k"
+        },
+        {
+            "img": "./img/4.png",
+            "firmName": "博瑞科技",
+            "positionName": "java开发工程师",
+            "time": "今天14:00",
+            "salary": "11k-14k"
+        },
+        {
+            "img": "./img/5.png",
+            "firmName": "博瑞科技",
+            "positionName": "java开发工程师",
+            "time": "今天14:00",
+            "salary": "11k-14k"
+        },
+        {
+            "img": "./img/6.png",
+            "firmName": "博瑞科技",
+            "positionName": "java开发工程师",
+            "time": "今天14:00",
+            "salary": "11k-14k"
+        }
+    ]
+}

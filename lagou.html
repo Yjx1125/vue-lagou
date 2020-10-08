@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>拉勾网</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        /* html {
+            font-size: 26.67vw;
+        } */
+
+        .header {
+            width: 100%;
+            height: 45px;
+            text-align: center;
+            line-height: 45px;
+            color: #fff;
+            background-color: #00b38a;
+        }
+
+        .firm img {
+            width: 60px;
+            height: 60px;
+            margin-top: 10px;
+        }
+
+        .firm .imgs {
+            width: 80px;
+            height: 62px;
+            /* background-color: orangered; */
+        }
+
+        .firm .info {
+            width: 221px;
+            height: 62px;
+            /* background-color: orangered; */
+            font-weight: 100;
+            color: #333333;
+        }
+
+        .firm .info h3 {
+            font-size: 16px;
+        }
+
+        .firm .info h4,
+        h5 {
+            font-size: 12px;
+        }
+
+        .firm .salary {
+            width: 80px;
+            height: 62px;
+            /* background-color: orangered; */
+            font-size: 16px;
+            color: #00b38a;
+        }
+
+        .search {
+            width: 100%;
+            height: 45px;
+            display: flex;
+            justify-content: space-around;
+
+
+        }
+
+        .search .area {
+            height: 45px;
+            line-height: 45px;
+        }
+
+        .search .txt {
+            height: 45px;
+            border: none;
+            outline: none;
+        }
+
+        .search .search-img {
+            margin-top: 12px;
+            width: 30px;
+            height: 30px;
+        }
+
+        .my .login {
+            width: 100%;
+            height: 111px;
+
+        }
+
+        .my .a_login {
+
+            text-decoration: none;
+            font-size: 1.4rem;
+            color: #fff;
+            display: block;
+            width: 125px;
+            height: 45px;
+            line-height: 45px;
+            text-align: center;
+            margin: 0 auto;
+            background-color: #1fc8a1;
+            position: relative;
+            top: 33px;
+        }
+
+        .my .choose {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .my .choose div {
+            /* width: 165px;
+            height: 86px; */
+            /* background-color: ; */
+            width: 48%;
+            height: 86px;
+            line-height: 86px;
+            background-color: #1fc8a1;
+            text-align: center;
+            color: #fff;
+            font-size: 1.6rem;
+            margin-top: 10px;
+            position: relative;
+
+        }
+
+        .my .choose div a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+
+
+        .footer {
+            width: 100%;
+            height: 45px;
+            background-color: #f6f6f6;
+            /* background-color: blue; */
+            /* color: #c2cfcc; */
+            line-height: 45px;
+            display: flex;
+            justify-content: space-around;
+            position: fixed;
+            top: 622px;
+            left: 0;
+        }
+
+        .footer button {
+            border: none;
+            outline: none;
+            /* color: #c2cfcc; */
+            font-size: 16px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 头部 -->
+        <div class="header">
+            <h2>拉勾网</h2>
+        </div>
+        <!-- 内容 -->
+        <div class="content">
+
+            <component :is="getCurrent">
+
+        </div>
+        <!-- 脚部 -->
+        <div class="footer">
+            <button @click="handleClick(tab.id)" v-for="tab in tabs">{{tab.txt}}
+            </button>
+        </div>
+    </div>
+    <!-- 模板一 -->
+    <script type="text/template" id="position">
+        <div class="firm">
+            <table>
+                <tr v-for="lists in this.datalist">
+                    <td class="imgs"> <img :src="lists.img" alt=""> </td>
+                    <td class="info"> 
+                        <h3> {{lists.firmName}} </h3>
+                        <h4>{{lists.positionName}} </h4>
+                    <h5> {{lists.time}} </h5>
+                    </td>
+                    <td class="salary">
+                     {{   lists.time}}
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </script>
+    <!-- 模板2 -->
+    <script type="text/template" id="search">
+       <div class="search">
+        <div class="area">全国</div><input class="txt" type="text" placeholder="搜索职位或公司"> <div> <img class="search-img" src="./img/search.jpg" alt=""></div>
+
+       </div>
+    </script>
+
+    <!-- 模板3 -->
+    <script type="text/template" id="my">
+        <div class="my">
+            <div class="login">
+                 <a class="a_login" href="javascript:;">登录/注册</a>
+            </div>
+            <div class="choose">
+                <div><a href="javascript:;">投递</a></div>
+                <div><a href="javascript:;">面试</a></div>
+                <div><a href="javascript:;">邀约</a></div>
+                <div><a href="javascript:;">收藏</a></div>
+            </div>
+
+        </div>
+     </script>
+    <script>
+        //定义组件
+        Vue.component("tab-position", {
+            // props: ["initnum"],
+            data: function () {
+                return {
+                    datalist: []
+                }
+
+            },
+            template: `#position`,
+            created() {
+                fetch("./lagou.json").then((res) => res.json()).then((res) => {
+                    console.log(res);
+                    this.datalist = res.data;
+                    console.log(this.datalist);
+                })
+            },
+
+        })
+
+        Vue.component("tab-search", {
+            template: `#search`
+        })
+        Vue.component("tab-my", {
+            template: `#my`
+        })
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                //标记，代表点击的是谁
+                current: "position",
+                tabs: [{ id: 'position', txt: "职位" }, { id: 'search', txt: "搜索" }, { id: 'my', txt: "我的" }],
+                activeColor: "#c2cfcc"
+            },
+
+
+            methods: {
+                handleClick(item) {
+                    this.current = item;
+                    this.activeColor = "#00b38a"
+
+
+                }
+            },
+            computed: {
+                getCurrent() {
+                    return "tab-" + this.current;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
